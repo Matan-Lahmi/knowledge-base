@@ -1,6 +1,6 @@
 # Networking - Debug Cheatsheet
 
-Quick commands, no explanations here — see [fundamentals.md](Fundamentals.md) / [security.md](Security.md) for the concepts behind them.
+Quick commands, no explanations here - see [fundamentals.md](Fundamentals.md) / [security.md](Security.md) for the concepts behind them.
 
 ```bash
 # connectivity
