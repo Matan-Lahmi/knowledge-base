@@ -59,7 +59,6 @@ A port is how a machine tells apart different services running on the same IP.
 ```bash
 sudo ss -tulpn
 ```
-See the [Linux debug section](../linux/README.md#local-port-check) for flags.
 
 - `LISTEN` status = something is actively waiting for connections on that port
 - Common ports to know: 22 (SSH), 80 (HTTP), 443 (HTTPS), 53 (DNS)
