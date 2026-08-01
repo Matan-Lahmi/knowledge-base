@@ -127,7 +127,7 @@ nslookup <domain>
 ## HTTP vs HTTPS
 
 - **HTTP** - plain text, anyone on the network path can read it
-- **HTTPS** - HTTP wrapped in TLS encryption, see [security.md](Security.md) for how that actually works
+- **HTTPS** - HTTP wrapped in TLS encryption.
 
 ### Status Codes
 - **2xx** - success (200 OK)
