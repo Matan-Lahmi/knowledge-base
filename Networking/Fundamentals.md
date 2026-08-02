@@ -49,6 +49,7 @@ CIDR notation = IP + how many bits are the "network part".
 192.168.1.0/24
 ```
 `/24` = first 24 bits are network, last 8 bits are for hosts = 256 addresses (254 usable).
+`/32` - single IP address (great for AWS Security Groups / firewall rules). Note: In on-prem you can't use /32 for a whole subnet because the first and last IPs are reserved for Network ID and Broadcast, and you need a Gateway IP for routing.
 
 Smaller number after `/` = bigger network (more hosts). `/16` >> `/24` in size.
 
@@ -108,7 +109,8 @@ Translates domain names to IP addresses.
 - **TLD (Top Level Domain)** - `.com`, `.io`, etc. servers, know where to find the authoritative server for a specific domain
 - **Authoritative server** - has the actual real answer for a domain
 
-Flow: you ask recursive resolver → it asks root → root points to TLD → TLD points to authoritative → authoritative gives the real answer → recursive resolver caches it and gives it back to you.
+Flow:
+You -> Recursive Resolver -> Root -> TLD -> Authoritative -> Real IP
 
 ```bash
 dig <domain>
