@@ -52,6 +52,7 @@ su - <username>                        # switch user
 ## Permissions & Ownership
 
 r=4 ,w=2, x=1
+
 owner,gruop,other
 
 ```bash
