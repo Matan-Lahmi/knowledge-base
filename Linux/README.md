@@ -53,7 +53,7 @@ su - <username>                        # switch user
 
 r=4 ,w=2, x=1
 
-owner,gruop,other
+owner,group,other
 
 ```bash
 ls -l                              # see permissions
