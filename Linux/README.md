@@ -51,6 +51,9 @@ su - <username>                        # switch user
 
 ## Permissions & Ownership
 
+r=4 ,w=2, x=1
+owner,gruop,other
+
 ```bash
 ls -l                              # see permissions
 chmod 755 file                     # rwxr-xr-x
@@ -132,7 +135,7 @@ grep "Failed password" /var/log/auth.log
 sudo ss -tulpn
 ```
 
-flags:
+flags I actually use:
 - `t` - tcp
 - `u` - udp
 - `l` - listening sockets only
@@ -146,8 +149,8 @@ flags:
 Key-based auth first, then disable password/root login — in that order, so you don't lock yourself out.
 
 ```bash
-# 1. on my own machine, generate a key
-ssh-keygen -t ed25519 -C "email@example.com"
+# 1. on my own machine, generate a key 
+ssh-keygen -t ed25519 -C "email@example.com" (chmod 600 ~/.ssh/id_ed25519)
 
 # 2. copy the public key to the server
 ssh-copy-id -i ~/.ssh/id_ed25519.pub user@server_ip
