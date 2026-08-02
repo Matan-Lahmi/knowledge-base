@@ -44,13 +44,20 @@ How a private IP "talks" to the internet at all. A private IP isn't routable on 
 ## CIDR & Subnets
 
 CIDR notation = IP + how many bits are the "network part".
+Smaller number after / = bigger network (more hosts). /16 > /24 in size.
 
 ```
 192.168.1.0/24
 ```
-`/24` = first 24 bits are network, last 8 bits are for hosts = 256 addresses (254 usable).
+`/24` = first 24 bits are network, last 8 bits are for hosts = 256 total addresses.
+- On-Prem: 254 usable (2 reserved: Network ID, Broadcast).
+- AWS VPC: 251 usable (AWS reserves 5 IPs: Network ID, VPC Router, AWS DNS, Future use, Broadcast).
 
-Smaller number after `/` = bigger network (more hosts). `/16` >> `/24` in size.
+`/32` - single IP address
+Great for AWS Security Groups and firewall rules to allow exactly one machine. 
+Note: You CANNOT create a /32 *subnet*. A subnet always requires routing overhead. 
+- Minimum AWS subnet is /28 (16 IPs).
+- Minimum On-Prem subnet is /30 (4 IPs: Network, Gateway, Endpoint, Broadcast).
 
 ## Ports
 
@@ -108,7 +115,8 @@ Translates domain names to IP addresses.
 - **TLD (Top Level Domain)** - `.com`, `.io`, etc. servers, know where to find the authoritative server for a specific domain
 - **Authoritative server** - has the actual real answer for a domain
 
-Flow: you ask recursive resolver → it asks root → root points to TLD → TLD points to authoritative → authoritative gives the real answer → recursive resolver caches it and gives it back to you.
+Flow:
+You -> Recursive Resolver -> Root -> TLD -> Authoritative -> Real IP
 
 ```bash
 dig <domain>
